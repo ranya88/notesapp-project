@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notesapp-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notesapp-frontend
+  template:
+    metadata:
+      labels:
+        app: notesapp-frontend
+    spec:
+      containers:
+      - name: notesapp-frontend
+        image: ririmustch/notesapp-frontend:latest
+        ports:
+        - containerPort: 80

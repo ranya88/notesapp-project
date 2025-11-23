@@ -1,0 +1,10 @@
+- name: Installer Minikube
+  get_url:
+    url: "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
+    dest: /usr/local/bin/minikube
+    mode: '0755'
+  register: minikube_install
+
+- name: Démarrer Minikube
+  command: minikube start --driver=docker
+  when: minikube_install.changed

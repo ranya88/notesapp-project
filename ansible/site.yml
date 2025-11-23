@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - docker
+    - kubectl
+    - minikube
+    - terraform
+    - helm
+    - metallb_ingress
+    - ingress_controller

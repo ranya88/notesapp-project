@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notesapp-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notesapp-db
+  template:
+    metadata:
+      labels:
+        app: notesapp-db
+    spec:
+      containers:
+      - name: notesapp-db
+        image: ririmustch/notesapp-db:latest
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          value: "user"
+        - name: POSTGRES_PASSWORD
+          value: "password"
+        - name: POSTGRES_DB
+          value: "notesappdb"

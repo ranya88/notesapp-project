@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notesapp-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notesapp-api
+  template:
+    metadata:
+      labels:
+        app: notesapp-api
+    spec:
+      containers:
+      - name: notesapp-api
+        image: ririmustch/notesapp-api:latest
+        ports:
+        - containerPort: 5000

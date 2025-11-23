@@ -1,0 +1,5 @@
+- name: Ajouter le dépôt Helm stable
+  command: helm repo add stable https://charts.helm.sh/stable
+
+- name: Mettre à jour les dépôts Helm
+  command: helm repo update

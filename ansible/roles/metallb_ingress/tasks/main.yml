@@ -1,0 +1,21 @@
+- name: Installer MetalLB
+  command: kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
+
+- name: Créer un configmap MetalLB
+  kubectl:
+    name: configmap
+    namespace: metallb-system
+    state: present
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: config
+        namespace: metallb-system
+      data:
+        config: |
+          address-pools:
+          - name: default
+            protocol: layer2
+            addresses:
+            - 192.168.1.240-192.168.1.250  # Remplace cette plage d'IP avec une plage valide pour ton réseau
